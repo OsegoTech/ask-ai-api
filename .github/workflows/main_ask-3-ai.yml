@@ -59,4 +59,4 @@ jobs:
           app-name: 'ask-3-ai'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_988F2021761A40CF9D807F810512BE53 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B62D391B26E847338C9A0F224DBFA385 }}
