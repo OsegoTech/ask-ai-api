@@ -1,18 +1,20 @@
-const envConfig = require('dotenv').config()
-const express = require('express')
-const cors = require('cors')
-const bodyParser = require('body-parser')
+import express from 'express'
+import cors from 'cors'
+import bodyParser from 'body-parser'
+import multer from 'multer'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const multer = require('multer')
+
 const upload = multer()
-
 const port = 3000
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
 ////// OpenAI config //////
-const { Configuration, OpenAIApi } = require('openai')
+import { OpenAIApi, Configuration } from 'openai'
+// const { Configuration, OpenAIApi } = require('openai')
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY
 })
@@ -43,7 +45,9 @@ app.post('/chat', async (req, res) => {
 })
 
 ////// Deepgram config //////
-const { Deepgram } = require('@deepgram/sdk')
+// const { Deepgram } = require('@deepgram/sdk')
+import pkg from '@deepgram/sdk'
+const { Deepgram } = pkg
 const deepgram = new Deepgram(process.env.DG_API)
 
 // Deepgram transcription
@@ -68,7 +72,8 @@ app.post('/dg-transcription', upload.single('file'), async (req, res) => {
 })
 
 ////// Replicate config //////
-const Replicate = require('replicate')
+// const Replicate = require('replicate')
+import Replicate from 'replicate'
 const replicate = new Replicate({
   auth: process.env.REPLICATE
 })
@@ -92,7 +97,8 @@ app.post('/minigpt', async (req, res) => {
 })
 
 ////// Token Counter //////
-const { encode } = require('gpt-3-encoder')
+// const { encode } = require('gpt-3-encoder')
+import { encode } from 'gpt-3-encoder'
 
 // Token Counter
 app.post('/tokenize', async (req, res) => {
