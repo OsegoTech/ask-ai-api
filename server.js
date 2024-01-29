@@ -7,7 +7,7 @@ dotenv.config()
 
 
 const upload = multer()
-const port = 3000
+const port = 8080
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
